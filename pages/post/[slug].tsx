@@ -27,7 +27,7 @@ export default function Home({ post }: Props) {
             <Image
                 className="object-contain"
                 alt={post?.title}
-                src={urlFor(post?.mainImage)?.url()}
+                src={urlFor(post?.mainImage || "")?.url()}
                 width={200}
                 height={200}
             />
