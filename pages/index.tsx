@@ -1,6 +1,7 @@
 import groq from "groq";
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import Card from "../components/Card";
 import Map from "../components/Map";
 import { Post } from "../typings";
@@ -23,8 +24,11 @@ export default function Home({ posts }: Props) {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+
             {posts?.map((post, index) => (
-                <Card key={index} post={post} />
+                <Link key={post._id} href="/">
+                    <Card post={post} />
+                </Link>
             ))}
             <Map />
         </div>

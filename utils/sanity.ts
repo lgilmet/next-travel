@@ -30,5 +30,5 @@ export const previewClient = createClient({
     token: "ska0qO5iykojIBSDVW2DMv14ZI9DMyMf9BaRBRm9IQ0AJtX1P6B7t8tF48MSSHmr8xgvFpIGX0Qq3k9l9pVyacEL6UXbsumJ42hDclwneHb2yV0vK0HdjxteNG2MjTPQgtFYccHhLtlklZC0PCouyag6Q7ZtB5UcL4QvwAlrjHnWx8m4gbgv",
 });
 
-export const getClient = (usePreview: any) =>
+export const getClient = (usePreview?: any) =>
     usePreview ? previewClient : sanityClient;
