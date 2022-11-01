@@ -4,7 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Card from "../../components/Card";
 import Map from "../../components/Map";
-import { Post } from "../../typings";
+import { Post, Slug } from "../../typings";
 import Image from "next/image";
 import { urlFor } from "../../utils/sanity";
 import { getClient } from "../../utils/sanity";
@@ -13,9 +13,9 @@ type Props = {
     post: Post;
 };
 
-type Params = {
-    slug: any;
-};
+// type Slug = { ???
+//     slug: Slug;
+// };
 
 export default function Home({ post }: Props) {
     console.log(post);
@@ -58,16 +58,14 @@ const query = groq`*[_type=="post" && slug.current == $slug][0] {
 }
 `;
 
-export async function getStaticProps({
-    params,
-    preview = false,
-}): Promise<{ props: { post: Post } }> {
-    const post = await getClient(preview).fetch(query, { slug: params.slug });
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+    const { slug } = params;
+    const post = await getClient(false).fetch(query, { slug });
 
-    console.log("here", post, params.slug);
+    console.log("here", post, slug);
     return {
         props: {
             post,
         },
     };
-}
+};
