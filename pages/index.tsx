@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
   }
   `);
 
-    console.log("🔙", posts);
+    console.log("🔙 backend", posts);
 
     return {
         props: {
