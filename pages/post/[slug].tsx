@@ -20,7 +20,7 @@ type Props = {
 export default function Home({ post }: Props) {
     console.log("is there a post", post);
 
-    return (
+    return typeof post !== "undefined" ? (
         <div>
             {" "}
             post page {post?._id}
@@ -32,6 +32,8 @@ export default function Home({ post }: Props) {
                 height={200}
             />
         </div>
+    ) : (
+        <div>no component</div>
     );
 }
 
