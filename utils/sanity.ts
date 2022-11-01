@@ -11,7 +11,7 @@ export const config = {
     dataset: "travel-blog",
     projectId: "1k3qp0o1",
     apiVersion: "2021-10-21",
-    useCdn: false,
+    useCdn: true,
 };
 
 export const sanityClient = createClient(config);
