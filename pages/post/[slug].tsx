@@ -59,7 +59,9 @@ const query = groq`*[_type=="post" && slug.current == $slug][0] {
 `;
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-    const { slug } = params;
+    console.log(params);
+
+    const slug = params.slug;
     const post = await getClient(false).fetch(query, { slug });
 
     console.log("here", post, slug);
