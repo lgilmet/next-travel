@@ -18,12 +18,12 @@ type Props = {
 // };
 
 export default function Home({ post }: Props) {
-    console.log(post);
+    console.log("is there a post", post);
 
     return (
         <div>
             {" "}
-            post page {post._id}
+            post page {post?._id}
             <Image
                 className="object-contain"
                 alt={post.title}
