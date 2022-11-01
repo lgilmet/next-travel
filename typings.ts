@@ -19,11 +19,16 @@ export interface Category extends SanityBody {
     id: string;
 }
 
+export interface Slug extends SanityBody {
+    _type: "slug";
+    current: "string";
+}
+
 export interface Post extends SanityBody {
     _type: "post";
     title: string;
     postedAt: string;
-    slug: string;
+    slug: Slug;
     username: string;
     mainImage: Image;
     categories: Category[];

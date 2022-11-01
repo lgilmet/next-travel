@@ -13,6 +13,10 @@ type Props = {
     post: Post;
 };
 
+type Params = {
+    slug: any;
+};
+
 export default function Home({ post }: Props) {
     console.log(post);
 
@@ -54,7 +58,10 @@ const query = groq`*[_type=="post" && slug.current == $slug][0] {
 }
 `;
 
-export async function getStaticProps({ params, preview = false }) {
+export async function getStaticProps({
+    params,
+    preview = false,
+}): Promise<{ props: { post: Post } }> {
     const post = await getClient(preview).fetch(query, { slug: params.slug });
 
     console.log("here", post, params.slug);

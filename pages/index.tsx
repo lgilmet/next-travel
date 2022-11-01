@@ -26,8 +26,12 @@ export default function Home({ posts }: Props) {
             </Head>
 
             {posts?.map((post, index) => (
-                <Link key={post._id} href="/">
+                <Link
+                    key={post._id}
+                    href="/post/[slug]"
+                    as={`post/${post.slug.current}`}>
                     <Card post={post} />
+                    {`post/${post.slug.current}`}
                 </Link>
             ))}
             <Map />
@@ -45,6 +49,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({
     "username": author->username,
     "categories": categories[]->{id, title},
     mainImage,
+    slug,
     publishedAt
   }
   `);
